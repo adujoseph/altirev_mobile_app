@@ -1,38 +1,40 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Screens from '../../../components/Screens';
 import CustomText from '../../../components/CustomText';
 import CustomButton from '../../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { register2 } from '../../../utils/constants';
 // import OTPInputView from '@twotalltotems/react-native-otp-input'
+import OTPTextView from 'react-native-otp-textinput';
+import OtpInput from '../../../components/OtpInput';
 
 const OtpScreen = () => {
   const navigation: any = useNavigation();
 
+  const [otp, setOtp] = useState<string>('');
+
+  const handleOtpChange = (code: string) => {
+    setOtp(code);
+  };
+
   const handleSubmit = () => {
+    console.log('Entered OTP:', otp);
     navigation.navigate(register2)
-  }
+  };
+
   return (
     <Screens>
       <View style={styles.container}>
         <CustomText>Kindly enter the verification code that has been sent to your email now.</CustomText>
         <View>
-          {/* <OTPInputView
-            style={{ width: '80%', height: 200 }}
-            pinCount={6}
-            // code={this.state.code} //You can supply this prop or not. The component will be used as a controlled / uncontrolled component respectively.
-            // onCodeChanged = {code => { this.setState({code})}}
-            autoFocusOnLoad
-            codeInputFieldStyle={styles.underlineStyleBase}
-            codeInputHighlightStyle={styles.underlineStyleHighLighted}
-            onCodeFilled={(code => {
-              console.log(`Code is ${code}, you are good to go!`)
-            })}
-          /> */}
+          <OtpInput length={6} value={otp} onChange={handleOtpChange} style={{height: 150, alignItems:'center'}}/>
         </View>
-        <CustomText>Don’t receive OTP? <CustomText>Resend OTP</CustomText>.</CustomText>
+        <CustomText style={{textAlign: 'center'}}>Don’t receive OTP? <CustomText>Resend OTP</CustomText></CustomText>
+        <View style={{marginTop: 30}}>
         <CustomButton title='Verify' onPress={handleSubmit} />
+        </View>
+       
       </View>
     </Screens>
   )
