@@ -38,7 +38,7 @@ const CustomSelectInput = ({
     <View style={[styles.container, style]}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TouchableOpacity onPress={handlePress} style={[styles.selectContainer, styles.button]}>
-        <Text style={styles.selectedValue}>{value?.label || placeholder || 'Select an option'}</Text>
+        <Text style={styles.selectedValue}>{value || placeholder || 'Select an option'}</Text>
         <DownArrowIcon />
       </TouchableOpacity>
       {isOpen && (

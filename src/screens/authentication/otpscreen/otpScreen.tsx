@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import Screens from '../../../components/Screens';
 import CustomText from '../../../components/CustomText';
 import CustomButton from '../../../components/CustomButton';
@@ -8,19 +8,37 @@ import { register2 } from '../../../utils/constants';
 // import OTPInputView from '@twotalltotems/react-native-otp-input'
 import OTPTextView from 'react-native-otp-textinput';
 import OtpInput from '../../../components/OtpInput';
+import { RouteProp } from '@react-navigation/native';
+import { initiateOtp, verifyOtp } from '../../../services/authentication';
 
-const OtpScreen = () => {
+interface OtpScreenProps {
+  route: any; //TODO: fix better type
+}
+const OtpScreen: FC<OtpScreenProps> = ({ route }) => {
   const navigation: any = useNavigation();
-
+  const { payload } = route.params
   const [otp, setOtp] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleOtpChange = (code: string) => {
     setOtp(code);
   };
 
-  const handleSubmit = () => {
-    console.log('Entered OTP:', otp);
-    navigation.navigate(register2)
+  const handleSubmit = async () => {
+    if (!otp || otp.length > 6) {
+      setErrorMessage('enter valid otp')
+      return
+    }
+    setLoading(true)
+    const response: any = await verifyOtp({ email: payload.email, token: otp })
+    console.log({response})
+    if (response.status === 200) {
+      navigation.navigate(register2, {payload})
+    } else {
+      setErrorMessage(response.data.message)
+    }
+    setLoading(false)
   };
 
   return (
@@ -28,13 +46,14 @@ const OtpScreen = () => {
       <View style={styles.container}>
         <CustomText>Kindly enter the verification code that has been sent to your email now.</CustomText>
         <View>
-          <OtpInput length={6} value={otp} onChange={handleOtpChange} style={{height: 150, alignItems:'center'}}/>
+          <OtpInput length={6} value={otp} onChange={handleOtpChange} style={{ height: 150, alignItems: 'center' }} />
         </View>
-        <CustomText style={{textAlign: 'center'}}>Don’t receive OTP? <CustomText>Resend OTP</CustomText></CustomText>
-        <View style={{marginTop: 30}}>
-        <CustomButton title='Verify' onPress={handleSubmit} />
+        <CustomText style={{ textAlign: 'center' }}>Don’t receive OTP? <CustomText>Resend OTP</CustomText></CustomText>
+        <View style={{ marginTop: 30 }}>
+          <CustomButton title='Verify' onPress={handleSubmit} loading={loading} />
         </View>
-       
+        {errorMessage ? <View><CustomText style={{color:'red', textAlign:'center'}}>{errorMessage}</CustomText></View>: null}
+
       </View>
     </Screens>
   )

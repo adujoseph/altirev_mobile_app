@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   createStackNavigator,
   CardStyleInterpolators,
@@ -103,7 +103,7 @@ const RootStackScreen = () => (
         },
       }}
     />
-     <RootStack.Screen
+    <RootStack.Screen
       name={forgotpass}
       component={ForgotPasswordScreen}
       options={{
@@ -120,7 +120,21 @@ const RootStackScreen = () => (
       component={AuthSuccessScreen}
       options={{
         headerTransparent: true,
+        headerShown: false,
         headerTitle: '',
+        headerTintColor: '#000',
+        headerStyle: {
+          backgroundColor: '#F6F6F6',
+        },
+      }}
+    />
+
+    <RootStack.Screen
+      name={result_upload}
+      component={ResultUploadScreen}
+      options={{
+        headerTransparent: true,
+        headerTitle: 'Result Upload History',
         headerTintColor: '#000',
         headerStyle: {
           backgroundColor: '#F6F6F6',
@@ -140,19 +154,6 @@ const RootStackScreen = () => (
         },
       }}
       component={BottomNav}
-    />
-
-<RootStack.Screen
-      name={result_upload}
-      component={ResultUploadScreen}
-      options={{
-        headerTransparent: true,
-        headerTitle: '',
-        headerTintColor: '#000',
-        headerStyle: {
-          backgroundColor: '#F6F6F6',
-        },
-      }}
     />
 
   </RootStack.Navigator>

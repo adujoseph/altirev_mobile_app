@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 
 const Axios:  AxiosInstance = axios.create({
   baseURL: 'https://api.altirev.com/api', // Replace with your API base URL
-  timeout: 10000, // 10 seconds timeout
+  // timeout: 10000, // 10 seconds timeout
   headers: {
     'Content-Type': 'application/json',
   },
@@ -13,6 +13,7 @@ Axios.interceptors.request.use(
   config => {
     // You can add authorization headers or any custom headers here
     // Example: config.headers['Authorization'] = `Bearer ${token}`;
+    console.log({config})
     return config;
   },
   error => {
@@ -23,9 +24,11 @@ Axios.interceptors.request.use(
 // You can also set up response interceptors
 Axios.interceptors.response.use(
   response => {
+    console.log({response}, "Instance response")
     return response;
   },
   error => {
+    console.log(error)
     // Handle errors globally
     if (error.response) {
       // Server-side error

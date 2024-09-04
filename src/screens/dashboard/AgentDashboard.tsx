@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, FlatList, useWindowDimensions, Dimensions } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from './_components/HeaderSection'
 import HeaderSection from './_components/HeaderSection'
 import ProfileSection from './_components/ProfileSection'
@@ -7,14 +7,19 @@ import ResultItem from './_components/ResultItem'
 import { demo_data } from './_components/DemoData'
 import EmptyComponent from './EmptyComponent'
 import ListHeader from './_components/ListHeader'
+import Authcontext from '../../context/Authcontext'
 
 const {height, width} =  Dimensions.get('window')
 
 const AgentDashboard = () => {
+
+   const {myUser} = useContext(Authcontext);
     const ItemSeparatorComponent = () => <View style={styles.separator} />;
+
+
     return (
         <View style={{ flexGrow: 1 }}>
-            <HeaderSection />
+            <HeaderSection name={myUser.firstName}  type={myUser.role} />
             <ProfileSection />
             <View style={{ paddingHorizontal: 20, marginTop: 20 }}>
                 <View style={styles.card}>

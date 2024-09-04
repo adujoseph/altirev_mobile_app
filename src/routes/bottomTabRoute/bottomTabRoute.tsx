@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React , {useContext} from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { user_agent, user_regular } from './bottomTabData';
 import { colors } from '../../utils/theme';
@@ -15,19 +15,21 @@ import UploadResult from '../../screens/uploadResult';
 import UploadReport from '../../screens/uploadReport';
 import UploadIcon from '../../assets/svg/UploadIcon';
 import ReportIcon from '../../assets/svg/ReportIcon';
+import Authcontext from '../../context/Authcontext';
+import UserDashboard from '../../screens/dashboard/UserDashboard';
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabRoute = () => {
-    const userRole = 'regular';
-    if (userRole === 'regular') {
+   const {myRole} = useContext(Authcontext);
+    if (myRole === "user") {
         return (
             <Tab.Navigator screenOptions={{
                 headerShown: false,
                 tabBarStyle: styles.container,
                 tabBarItemStyle: styles.tabItem
             }}>
-                <Tab.Screen name={'home'} component={Dashboard} options={{
+                <Tab.Screen name={'home'} component={UserDashboard} options={{
                     title: 'Home',
                     tabBarIcon: ({ focused }) => <HomeIcon color={focused ? colors.primary : colors.dark_bg} />
                 }} />

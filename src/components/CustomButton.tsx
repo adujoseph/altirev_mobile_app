@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, StyleProp, ViewStyle, TextStyle, ActivityIndicator } from 'react-native';
 import { colors } from '../utils/theme';
 
 interface ButtonProps {
@@ -9,6 +9,7 @@ interface ButtonProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   inverted?: boolean;
+  loading?: boolean;
 }
 
 const CustomButton: React.FC<ButtonProps> = ({
@@ -17,7 +18,8 @@ const CustomButton: React.FC<ButtonProps> = ({
   disabled,
   style,
   textStyle,
-  inverted
+  inverted,
+  loading
 }) => {
   const buttonStyles = [styles.button];
   const textStyles = [styles.buttonText];
@@ -33,7 +35,9 @@ const CustomButton: React.FC<ButtonProps> = ({
       onPress={onPress}
       style={[styles.button, {backgroundColor: inverted ? '#fff': colors.primary, borderWidth : inverted? 1: 0}, style]}
     >
-      <Text style={[styles.buttonText,{color : inverted ? colors.primary : '#fff' }, textStyle]}>{title}</Text>
+     {loading ?
+      <ActivityIndicator  size={'large'} color={inverted ? colors.primary : '#fff'}/> :
+      <Text style={[styles.buttonText,{color : inverted ? colors.primary : '#fff' }, textStyle]}>{title}</Text>  }
     </TouchableOpacity>
   );
 };

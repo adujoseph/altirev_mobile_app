@@ -1,13 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import UserDashboard from './UserDashboard'
 import AgentDashboard from './AgentDashboard'
+import Authcontext from '../../context/Authcontext'
 
 const Dashboard = () => {
-  const userRole = 'user'
+  const {myRole, activeType} = useContext(Authcontext);
   return (
     <View style={{ flex: 1 }}>
-      {userRole !== 'user' ?
+      {activeType === 'Patriot' ?
         <UserDashboard /> : <AgentDashboard />}
     </View>
   )
