@@ -4,14 +4,14 @@ import { TextInput } from 'react-native-gesture-handler'
 import CustomText from './CustomText'
 
 const { height, width } = Dimensions.get('window')
-const CustomTextArea = ({ label, count }: any) => {
+const CustomTextArea = ({ label, count, value, ...rest }: any) => {
     return (
         <View style={styles.wrapper}>
             <CustomText>{label}</CustomText>
             <View style={styles.textArea}>
-                <TextInput multiline={true} placeholder='Typing...' style={styles.input} />
+                <TextInput multiline={true} placeholder='Typing...' style={styles.input} {...rest} maxLength={count} />
             </View>
-            <CustomText style={styles.count}>0/{count}</CustomText>
+            <CustomText style={styles.count}>{value.length}/{count}</CustomText>
         </View>
     )
 }

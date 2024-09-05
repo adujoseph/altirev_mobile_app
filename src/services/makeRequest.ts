@@ -1,6 +1,6 @@
 // src/api/apiRequests.ts
-import Axios from "../utils/axios";
-import { AxiosError } from 'axios';
+import Axios from '../utils/axios';
+import {AxiosError} from 'axios';
 
 interface ApiResponse<T> {
   data: T;
@@ -13,7 +13,7 @@ export const getRequest = async <T>(url: string): Promise<any> => {
     return response;
   } catch (error: any) {
     // throw new Error(error.response?.data?.message || 'Error fetching data');
-    return error.response
+    return error.response;
   }
 };
 
@@ -23,7 +23,7 @@ export const postRequest = async <T, D>(url: string, data: D): Promise<any> => {
     return response;
   } catch (error: any) {
     // throw new Error(error.response?.data?.message || 'Error posting data');
-    return error.response
+    return error.response;
   }
 };
 
@@ -31,8 +31,21 @@ export const putRequest = async <T, D>(url: string, data: D): Promise<any> => {
   try {
     const response = await Axios.put<ApiResponse<T>>(url, data);
     return response;
-  } catch (error : any) {
+  } catch (error: any) {
     // throw new Error(error.response?.data?.message || 'Error updating data');
-    return error.response
+    return error.response;
+  }
+};
+
+export const fileUpload = async <T, D>(url: string, data: D) => {
+  try {
+    let options = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    };
+    await Axios.post(url, data, options);
+  } catch (error: any) {
+    return error.response;
   }
 };

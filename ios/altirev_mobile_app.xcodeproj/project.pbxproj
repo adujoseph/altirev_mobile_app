@@ -44,7 +44,7 @@
 		5B7EB9410499542E8C5724F5 /* Pods-altirev_mobile_app-altirev_mobile_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altirev_mobile_app-altirev_mobile_appTests.debug.xcconfig"; path = "Target Support Files/Pods-altirev_mobile_app-altirev_mobile_appTests/Pods-altirev_mobile_app-altirev_mobile_appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-altirev_mobile_app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-altirev_mobile_app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = altirev_mobile_app/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		83CD31C6A8205AA32ABF7CD7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = altirev_mobile_app/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		83CD31C6A8205AA32ABF7CD7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = altirev_mobile_app/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-altirev_mobile_app-altirev_mobile_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altirev_mobile_app-altirev_mobile_appTests.release.xcconfig"; path = "Target Support Files/Pods-altirev_mobile_app-altirev_mobile_appTests/Pods-altirev_mobile_app-altirev_mobile_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -472,6 +472,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UXDJ99BFMM;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = altirev_mobile_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -499,6 +500,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UXDJ99BFMM;
 				INFOPLIST_FILE = altirev_mobile_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -17,6 +17,7 @@ import UploadIcon from '../../assets/svg/UploadIcon';
 import ReportIcon from '../../assets/svg/ReportIcon';
 import Authcontext from '../../context/Authcontext';
 import UserDashboard from '../../screens/dashboard/UserDashboard';
+import CustomText from '../../components/CustomText';
 
 const Tab = createBottomTabNavigator();
 
@@ -50,24 +51,34 @@ const BottomTabRoute = () => {
     }
     return (
         <Tab.Navigator screenOptions={{
-            headerShown: false,
+            //
             tabBarStyle: styles.container,
-            tabBarItemStyle: styles.tabItem
+            tabBarItemStyle: styles.tabItem,
+            headerTitleStyle: { textAlign: 'center', paddingLeft: '40%'},
+            headerStyle: {backgroundColor: 'transparent'}
         }}>
                <Tab.Screen name={'home'} component={Dashboard} options={{
                     title: 'Home',
+                    headerShown: false,
                     tabBarIcon: ({ focused }) => <HomeIcon color={focused ? colors.primary : colors.dark_bg} />
                 }} />
-                <Tab.Screen name={'result'} component={UploadResult} options={{
+                <Tab.Screen 
+                name={'result'} component={UploadResult} options={{
                     title: 'Results',
                     tabBarIcon: ({ focused }) => <UploadIcon color={focused ? colors.primary : colors.dark_bg} />
                 }} />
-                <Tab.Screen name={'report'} component={UploadReport} options={{
+                <Tab.Screen 
+                name={'report'} 
+                component={UploadReport} 
+                options={{
                     title: 'Reports',
+                    headerTitle: 'Reports',
+                   // header: () => <CustomText>Reports</CustomText>,
                     tabBarIcon: ({ focused }) => <ReportIcon color={focused ? colors.primary : colors.dark_bg} />
                 }} />
                 <Tab.Screen name={'profile'} component={ProfileScreen} options={{
                     title: 'Profile',
+                    headerShown: false,
                     tabBarIcon: ({ focused }) => <PersonIcon color={focused ? colors.primary : colors.dark_bg} />
                 }} />
         </Tab.Navigator>

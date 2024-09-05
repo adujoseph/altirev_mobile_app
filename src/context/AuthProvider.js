@@ -5,17 +5,11 @@ export default AuthProvider = ({ children }) => {
     const [myRole, setMyRole] = useState('')
     const [myUser, setMyUser] = useState('')
     const [activeType, setActiveType] = useState('')
-
-    // const login = () => {
-    //     setIsAuthenticated(true);
-    // };
-
-    // const logout = () => {
-    //     setIsAuthenticated(false);
-    // };
+    const [videoLink, setVideoLink] = useState('')
+    const [audioLink, setAudioLink] = useState('')
 
     return (
-        <AuthContext.Provider value={{ myRole, setMyRole, myUser, setMyUser, activeType, setActiveType }}>
+        <AuthContext.Provider value={{ myRole, setMyRole, myUser, setMyUser, activeType, setActiveType, videoLink, setVideoLink, audioLink, setAudioLink }}>
             {children}
         </AuthContext.Provider>
     );

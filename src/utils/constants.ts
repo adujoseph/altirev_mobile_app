@@ -12,3 +12,4 @@ export const authSuccess = 'AuthSuccess';
 export const dashboard = 'Dashboard';
 export const dash = 'Dash'
 export const result_upload ='Result Upload'
+export const video_recording = 'Video Recording';

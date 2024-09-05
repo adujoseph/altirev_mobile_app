@@ -4,7 +4,7 @@ import {
   CardStyleInterpolators,
 } from '@react-navigation/stack';
 // import {BottomTabNav} from './bottomRoute';
-import { authSuccess, dash, forgotpass, login, otpScreen, register1, register2, result_upload, splashscreen, welcome } from '../../utils/constants';
+import { authSuccess, dash, forgotpass, login, otpScreen, register1, register2, result_upload, splashscreen, video_recording, welcome } from '../../utils/constants';
 import SplashScreen from '../../screens/onboarding/splashscreen/SplashScreen';
 import WelcomeScreen from '../../screens/onboarding/welcome/Welcome';
 import LoginScreen from '../../screens/authentication/login/Login';
@@ -15,6 +15,7 @@ import OtpScreen from '../../screens/authentication/otpscreen/otpScreen';
 import ForgotPasswordScreen from '../../screens/authentication/forgotpassword/ForgotPassword';
 import BottomNav from '../bottomTabRoute/bottomTabRoute'
 import ResultUploadScreen from '../../screens/uploadResult/resultUploadScreen/ResultUploadScreen';
+import CameraRecordScreen from '../../screens/common/Camera/CameraRecording';
 
 
 
@@ -135,6 +136,19 @@ const RootStackScreen = () => (
       options={{
         headerTransparent: true,
         headerTitle: 'Result Upload History',
+        headerTintColor: '#000',
+        headerStyle: {
+          backgroundColor: '#F6F6F6',
+        },
+      }}
+    />
+
+<RootStack.Screen
+      name={video_recording}
+      component={CameraRecordScreen}
+      options={{
+        headerTransparent: true,
+        headerTitle: '',
         headerTintColor: '#000',
         headerStyle: {
           backgroundColor: '#F6F6F6',
